@@ -31,23 +31,23 @@ public class ThirdLargestNumber {
     public static int largestValue(int[] arr) {
 //     Sorting here the largest element in an Array
         int largestElement = Integer.MIN_VALUE;
+        int secondLargest = Integer.MIN_VALUE;
+        int thirdLargest = Integer.MIN_VALUE;
+
         for (int i=0; i < arr.length; i++ ) {
             if (arr[i] > largestElement) {
+                thirdLargest = secondLargest;
+                secondLargest = largestElement;
                 largestElement = arr[i];
             }
-        }
-//     Sorting second-largest element in an Array
-        int secondLargest = Integer.MIN_VALUE;
-        for (int i=0; i < arr.length; i++) {
-            if (arr[i] > secondLargest && arr[i] != largestElement)
+            else if (arr[i] > secondLargest && arr[i] != largestElement) {
+                thirdLargest = secondLargest;
                 secondLargest = arr[i];
-        }
-//     Sorting here the third-largest element in an Array
-        int thirdLargest = Integer.MIN_VALUE;
-        for (int i=0; i < arr.length; i++) {
-            if (arr[i] > thirdLargest && arr[i] != secondLargest && arr[i] != largestElement)
+            } else if (arr[i] > thirdLargest && arr[i] != secondLargest && arr[i] != largestElement) {
                 thirdLargest = arr[i];
+            }
         }
+
 //      Sorting here the second-smallest element in an Array
         int small = Integer.MAX_VALUE;
         int secondSmallest = Integer.MAX_VALUE;
